@@ -9,19 +9,6 @@ import { AppBar } from '../AppBar';
 import { Form } from '../Form';
 import { Wrapper } from './App.style';
 
-function extractKeyValuesFromString(str) {
-  return trimStart(str, '?')
-    .split('&')
-    .reduce((acc, elem) => {
-      if (!elem) {
-        return acc;
-      }
-
-      const elems = elem.split('=');
-      return { ...acc, [elems[0]]: elems[1] };
-    }, {});
-}
-
 const client_id = process.env.REACT_APP_CLIENT_ID;
 const client_secret = process.env.REACT_APP_CLIENT_SECRET;
 
@@ -66,7 +53,7 @@ export class App extends Component {
           'The code passed is incorrect or expired.'
         ) {
           window.location = `https://github.com/login/oauth/authorize?${qs.stringify(
-            params
+            authorizeAppParams
           )}`;
         }
         // we assume everything is alright now, but well...
