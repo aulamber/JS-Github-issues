@@ -13,18 +13,6 @@ import { PageIssueType } from './content/PageIssueType';
 import { PageIssueContent } from './content/PageIssueContent';
 import { PageSummary } from './content/PageSummary';
 
-// {
-//   "title": "Found a bug",
-//   "body": "I'm having a problem with this.",
-//   "assignees": [
-//     "octocat"
-//   ],
-//   "milestone": 1,
-//   "labels": [
-//     "bug"
-//   ]
-// }
-
 const onSubmit = ({ title, ...values }) => {
   console.log({ values, valuesToSubmit });
 
@@ -41,7 +29,7 @@ const onSubmit = ({ title, ...values }) => {
   // https://developer.github.com/v3/issues/#create-an-issue
 
   post(
-    `https://api.github.com/repos/${values.owner}/${
+    `/api/repos/${values.owner}/${
       values.repository
     }/issues?access_token=${localStorage.getItem('access_token')}`,
     valuesToSubmit
