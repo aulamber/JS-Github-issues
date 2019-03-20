@@ -20,6 +20,9 @@ function extractKeyValuesFromString(str) {
     }, {});
 }
 
+const clientId = process.env.REACT_APP_CLIENT_ID;
+const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
+
 export class App extends Component {
   componentDidMount() {
     console.log('access_token = ', localStorage.getItem('access_token'));
@@ -31,12 +34,12 @@ export class App extends Component {
       const urlParams = extractKeyValuesFromString(window.location.search);
 
       if (!urlParams.code) {
-        window.location = `${GITHUB_URL}/login/oauth/authorize?client_id=4ee24da68e1ac5ab126e`;
+        window.location = `${GITHUB_URL}/login/oauth/authorize?client_id=${clientId}`;
       } else if (urlParams.code) {
         get(
           `${GITHUB_URL}/login/oauth/access_token?code=${
             urlParams.code
-          }&client_id=4ee24da68e1ac5ab126e&client_secret=54e0078bac3e7e4949d0c5fa7401d78a2df203f9`
+          }&client_id=${clientId}&client_secret=${clientSecret}`
         )
           .then(response => response.text())
           .then(res => {
