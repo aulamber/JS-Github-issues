@@ -27,43 +27,6 @@ const client_secret = process.env.REACT_APP_CLIENT_SECRET;
 
 export class App extends Component {
   componentDidMount() {
-    // console.log('access_token = ', localStorage.getItem('access_token'));
-    // if (
-    //   localStorage.getItem('access_token') === 'undefined' ||
-    //   localStorage.getItem('access_token') === 'null' ||
-    //   !localStorage.getItem('access_token')
-    // ) {
-    //   const urlParams = extractKeyValuesFromString(window.location.search);
-
-    //   const authorizeAppParams = {
-    //     client_id: clientId,
-    //     scope = 'repo',
-    //   }
-
-    //   if (!urlParams.code) {
-    //     window.location = `${GITHUB_URL}/login/oauth/authorize?${qs.stringify(authorizeAppParams)}`;
-    //   } else if (urlParams.code) {
-    //     get(
-    //       `/nonapi/login/oauth/access_token?code=${
-    //         urlParams.code
-    //       }&client_id=${clientId}&client_secret=${clientSecret}`
-    //     )
-    //       .then(response => response.text())
-    //       .then(res => {
-    //         const params = extractKeyValuesFromString(res);
-
-    //         if (params.access_token) {
-    //           localStorage.setItem('access_token', params.access_token);
-    //         }
-    //       })
-    //       .then(() => this.getUser());
-    //   }
-    // } else if (!localStorage.getItem('user')) {
-    //   this.getUser();
-    // }
-
-    // const client_secret = '0abec94332b355f31ff90f1701248a93bc1bcbcf'
-    // const client_id = '57b23227995817a03a6d'
     const params = {
       client_id,
     };
@@ -107,22 +70,14 @@ export class App extends Component {
           )}`;
         }
         // we assume everything is alright now, but well...
-        // token = response.access_token
-        localStorage.setItem('access_token', response.access_token);
-
-        //   if (response.access_token) {
-        //     axios.post('/api/repos/bear-foot/absm/issues',{
-        //         title: 'Issue test'
-        //       },
-        //       {headers: { Authorization: `token ${response.access_token}` } }
-        //     )
-        //  }
+        token = response.access_token;
+        localStorage.setItem('access_token', token);
       })
       .then(res => {
         const params = extractKeyValuesFromString(res);
 
-        if (params.access_token) {
-          localStorage.setItem('access_token', params.access_token);
+        if (token) {
+          localStorage.setItem('access_token', token);
         }
       })
       .then(() => this.getUser())
