@@ -73,13 +73,13 @@ export class App extends Component {
         token = response.access_token;
         localStorage.setItem('access_token', token);
       })
-      .then(res => {
-        const params = extractKeyValuesFromString(res);
+      // .then(res => {
+      //   const params = extractKeyValuesFromString(res);
 
-        if (token) {
-          localStorage.setItem('access_token', token);
-        }
-      })
+      //   if (token) {
+      //     localStorage.setItem('access_token', token);
+      //   }
+      // })
       .then(() => this.getUser())
       .catch(err => console.log('Error = ', err));
   }
