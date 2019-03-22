@@ -24,7 +24,7 @@ const btn = (light, dark) => css`
 `;
 
 const btnDefault = css`
-  ${btn('#ffffff', '#d5d5d5')} color: #555;
+  ${btn('#ffffff', '#d5d5d5')};
 `;
 
 const btnPrimary = btn('#ffffff', '#d5d5d5');

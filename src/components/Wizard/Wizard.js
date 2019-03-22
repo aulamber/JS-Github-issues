@@ -61,7 +61,7 @@ function WizardComponent({
                     disabled={submitting}
                     className={classes.button}
                   >
-                    See new issue on Github
+                    See issue on Github
                   </Button>
                   <Button
                     variant="outlined"
