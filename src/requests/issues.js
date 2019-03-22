@@ -11,13 +11,10 @@ export function createIssue(owner, repository, valuesToSubmit) {
 
 export function getIssues() {
   const accessToken = localStorage.getItem('access_token');
-
   const owner = localStorage.getItem('owner');
   const repo = localStorage.getItem('repository');
 
   return axios.get(
-    `https://api.github.com/repos/${owner}/${repo}/issues?access_token=${localStorage.getItem(
-      'access_token'
-    )}`
+    `https://api.github.com/repos/${owner}/${repo}/issues?access_token=${accessToken}`
   );
 }

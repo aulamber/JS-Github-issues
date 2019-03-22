@@ -1,7 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -23,10 +22,6 @@ const FormPageSummaryComponent = ({ classes, theme }) => {
   return (
     <Wizard.Page>
       <div>
-        {/* <label>Issue review</label>
-
-      <h3>Title: {localStorage.getItem('title')}</h3> */}
-
         <div className={classes.root}>
           <div className={classes.section1}>
             <Grid container alignItems="center">
@@ -65,7 +60,7 @@ const FormPageSummaryComponent = ({ classes, theme }) => {
               <ListItemText primary="Description" secondary={description} />
             </ListItem>
 
-            {version && (
+            {label === 'bug' && (
               <div>
                 <Divider variant="middle" />
 
