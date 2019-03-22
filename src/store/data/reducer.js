@@ -1,6 +1,7 @@
 import { createReducer } from '../createReducer';
 import {
   RESET_ERROR,
+  RESET_DATA,
   RESET_LOADING,
   RESET_NEW_ISSUE_URL,
   RESET_REPOSITORIES,
@@ -24,6 +25,8 @@ const actionsHandlers = {
       error: initialState.error,
     };
   },
+
+  [RESET_DATA]: () => initialState,
 
   [RESET_LOADING]: state => {
     return {

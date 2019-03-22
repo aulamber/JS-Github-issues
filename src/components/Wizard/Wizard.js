@@ -27,7 +27,7 @@ function WizardComponent({
 }) {
   return (
     <Form initialValues={values} validate={validate} onSubmit={handleSubmit}>
-      {({ handleSubmit, submitting }) => {
+      {({ handleSubmit, submitting, reset }) => {
         return (
           <form onSubmit={handleSubmit}>
             <Content
@@ -67,7 +67,10 @@ function WizardComponent({
                     variant="outlined"
                     color="primary"
                     type="button"
-                    onClick={onReturnToFirstPage}
+                    onClick={() => {
+                      onReturnToFirstPage();
+                      reset();
+                    }}
                     className={classes.button}
                   >
                     Create another issue

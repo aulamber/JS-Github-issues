@@ -8,6 +8,7 @@ import {
   setError,
   setLoading,
   setNewIssueUrl,
+  resetData,
 } from '../../store/data';
 import { accessTokenSelector } from '../../store/authentication';
 import { createIssue } from '../../requests/issues';
@@ -21,6 +22,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  resetData,
   setError,
   setLoading,
   setNewIssueUrl,
@@ -50,7 +52,7 @@ export const Form = compose(
   }),
 
   withHandlers({
-    onSubmit: ({ setError, setLoading, setNewIssueUrl }) => ({
+    onSubmit: ({ resetData, setError, setLoading, setNewIssueUrl }) => ({
       title,
       ...values
     }) => {
@@ -68,6 +70,7 @@ export const Form = compose(
 
       createIssue(owner, repository, valuesToSubmit)
         .then(({ data }) => {
+          resetData();
           setNewIssueUrl(data.html_url);
           setLoading(false);
           setError('');
