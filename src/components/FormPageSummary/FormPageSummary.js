@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { Wizard } from '../Wizard';
 
-const FormPageSummaryComponent = ({ classes, theme }) => {
+const FormPageSummaryComponent = ({ classes }) => {
   const label = localStorage.getItem('label');
   const repository = `${localStorage.getItem('owner')}/${localStorage.getItem(
     'repository'

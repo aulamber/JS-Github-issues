@@ -8,6 +8,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 import { Content, EmptyDiv } from './Wizard.style';
+import { Row } from '../Flex';
 
 function WizardComponent({
   activePage,
@@ -16,6 +17,8 @@ function WizardComponent({
   handleSubmit,
   isLastPage,
   maxSteps,
+  newIssueUrl,
+  onReturnToFirstPage,
   page,
   previous,
   theme,
@@ -36,15 +39,40 @@ function WizardComponent({
 
               <div>{activePage}</div>
 
-              {isLastPage && (
+              {isLastPage && !newIssueUrl && (
                 <Button
                   variant="outlined"
                   color="primary"
                   type="submit"
                   disabled={submitting}
+                  className={classes.button}
                 >
                   SUBMIT
                 </Button>
+              )}
+
+              {newIssueUrl && (
+                <Row>
+                  <Button
+                    href={newIssueUrl}
+                    variant="outlined"
+                    color="primary"
+                    type="submit"
+                    disabled={submitting}
+                    className={classes.button}
+                  >
+                    See new issue on Github
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    type="button"
+                    onClick={onReturnToFirstPage}
+                    className={classes.button}
+                  >
+                    Create another issue
+                  </Button>
+                </Row>
               )}
 
               <MobileStepper
@@ -56,7 +84,9 @@ function WizardComponent({
                   <Button
                     size="small"
                     type="submit"
-                    disabled={disabled || page === maxSteps - 1}
+                    disabled={
+                      disabled || page === maxSteps - 1 || !!newIssueUrl
+                    }
                   >
                     Next
                     {theme.direction === 'rtl' ? (
@@ -71,7 +101,7 @@ function WizardComponent({
                     type="button"
                     size="small"
                     onClick={previous}
-                    disabled={page === 0}
+                    disabled={page === 0 || !!newIssueUrl}
                   >
                     {theme.direction === 'rtl' ? (
                       <KeyboardArrowRight />
@@ -82,8 +112,6 @@ function WizardComponent({
                   </Button>
                 }
               />
-
-              {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
             </Content>
           </form>
         );
@@ -100,6 +128,8 @@ WizardComponent.propTypes = {
   initialValues: PropTypes.shape().isRequired,
   isLastPage: PropTypes.bool.isRequired,
   maxSteps: PropTypes.number.isRequired,
+  newIssueUrl: PropTypes.string.isRequired,
+  onReturnToFirstPage: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
   theme: PropTypes.shape().isRequired,
@@ -108,6 +138,13 @@ WizardComponent.propTypes = {
 
 export const Wizard = withStyles(
   {
+    button: {
+      border: '1px solid rgba(63, 81, 181, 0.5)',
+      color: '#3f51b5',
+      fontSize: '12px',
+      height: '33px',
+    },
+
     mobileStepper: {
       backgroundColor: 'transparent',
       marginTop: '30px',

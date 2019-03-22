@@ -27,3 +27,14 @@ export const setRepositories = repositories => ({
   type: SET_REPOSITORIES,
   repositories,
 });
+
+/* Issues */
+
+export const RESET_NEW_ISSUE_URL = 'RESET_NEW_ISSUE_URL';
+export const resetNewIssueUrl = () => ({ type: RESET_NEW_ISSUE_URL });
+
+export const SET_NEW_ISSUE_URL = 'SET_NEW_ISSUE_URL';
+export const setNewIssueUrl = newIssueUrl => ({
+  type: SET_NEW_ISSUE_URL,
+  newIssueUrl,
+});

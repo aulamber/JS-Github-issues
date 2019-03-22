@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 
 import {
   errorSelector,
-  setError,
-  setLoading,
   loadingSelector,
   repositoriesSelector,
+  setError,
+  setLoading,
+  setNewIssueUrl,
 } from '../../store/data';
 import { accessTokenSelector } from '../../store/authentication';
 import { createIssue } from '../../requests/issues';
@@ -22,6 +23,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   setError,
   setLoading,
+  setNewIssueUrl,
 };
 
 export const Form = compose(
@@ -48,10 +50,10 @@ export const Form = compose(
   }),
 
   withHandlers({
-    getAccessToken: ({ accessToken }) => () => accessToken,
-    getRepositories: ({ repositories }) => () => repositories,
-
-    onSubmit: ({ setError, setLoading }) => ({ title, ...values }) => {
+    onSubmit: ({ setError, setLoading, setNewIssueUrl }) => ({
+      title,
+      ...values
+    }) => {
       const { owner, repository } = values;
       const valuesToSubmit = {
         title: title.label,
@@ -65,7 +67,8 @@ export const Form = compose(
       setLoading(true);
 
       createIssue(owner, repository, valuesToSubmit)
-        .then(() => {
+        .then(({ data }) => {
+          setNewIssueUrl(data.html_url);
           setLoading(false);
           setError('');
 

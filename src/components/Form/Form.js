@@ -10,13 +10,7 @@ import { FormPageSummary } from '../FormPageSummary';
 import { FormStyle } from './Form.style';
 import { validation } from './validation';
 
-const FormComponent = ({
-  disabled,
-  getAccessToken,
-  getRepositories,
-  initialValues,
-  onSubmit,
-}) => {
+const FormComponent = ({ disabled, initialValues, onSubmit }) => {
   return (
     <FormStyle>
       <Wizard
@@ -40,7 +34,6 @@ const FormComponent = ({
 
 FormComponent.propTypes = {
   disabled: PropTypes.bool.isRequired,
-  getRepositories: PropTypes.func.isRequired,
   initialValues: PropTypes.shape().isRequired,
   onSubmit: PropTypes.func.isRequired,
 };

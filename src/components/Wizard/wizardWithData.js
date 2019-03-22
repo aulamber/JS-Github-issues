@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   compose,
   setStatic,
@@ -7,10 +8,24 @@ import {
   withStateHandlers,
 } from 'recompose';
 
+import { newIssueUrlSelector, resetNewIssueUrl } from '../../store/data';
 import { Wizard as WizardComponent } from './Wizard';
+
+const mapStateToProps = state => ({
+  newIssueUrl: newIssueUrlSelector(state),
+});
+
+const mapDispatchToProps = {
+  resetNewIssueUrl,
+};
 
 export const Wizard = compose(
   setStatic('Page', ({ children }) => children),
+
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
 
   withStateHandlers(
     ({
@@ -51,6 +66,11 @@ export const Wizard = compose(
       } else {
         next(values);
       }
+    },
+
+    onReturnToFirstPage: ({ resetNewIssueUrl, setPage }) => () => {
+      resetNewIssueUrl();
+      setPage(0);
     },
 
     previous: ({ page, setPage }) => () => {

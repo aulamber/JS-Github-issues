@@ -2,36 +2,46 @@ import { createReducer } from '../createReducer';
 import {
   RESET_ERROR,
   RESET_LOADING,
+  RESET_NEW_ISSUE_URL,
   RESET_REPOSITORIES,
   SET_ERROR,
   SET_LOADING,
+  SET_NEW_ISSUE_URL,
   SET_REPOSITORIES,
 } from './actions';
 
 const initialState = {
   error: '',
   loading: false,
+  newIssueUrl: '',
   repositories: [],
 };
 
 const actionsHandlers = {
-  [RESET_ERROR]: () => {
+  [RESET_ERROR]: state => {
     return {
-      ...initialState,
+      ...state,
       error: initialState.error,
     };
   },
 
-  [RESET_LOADING]: () => {
+  [RESET_LOADING]: state => {
     return {
-      ...initialState,
+      ...state,
       loading: initialState.loading,
     };
   },
 
-  [RESET_REPOSITORIES]: () => {
+  [RESET_NEW_ISSUE_URL]: state => {
     return {
-      ...initialState,
+      ...state,
+      newIssueUrl: initialState.newIssueUrl,
+    };
+  },
+
+  [RESET_REPOSITORIES]: state => {
+    return {
+      ...state,
       repositories: initialState.repositories,
     };
   },
@@ -47,6 +57,13 @@ const actionsHandlers = {
     return {
       ...state,
       loading: action.loading,
+    };
+  },
+
+  [SET_NEW_ISSUE_URL]: (state, action) => {
+    return {
+      ...state,
+      newIssueUrl: action.newIssueUrl,
     };
   },
 

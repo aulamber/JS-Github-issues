@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
-import { ExternallyChanged, OnChange } from 'react-final-form-listeners';
+import { OnChange } from 'react-final-form-listeners';
 import { Grid, MenuItem, withStyles } from '@material-ui/core';
 import { Select } from 'final-form-material-ui';
 
@@ -38,13 +38,6 @@ export function FormPageRepositoryComponent({ classes, repositories }) {
               localStorage.setItem('repository', value);
             }}
           </OnChange>
-
-          <ExternallyChanged name="owner">
-            {(...args) => {
-              console.log('args = ', args);
-              return null;
-            }}
-          </ExternallyChanged>
         </Grid>
       </Grid>
     </Wizard.Page>

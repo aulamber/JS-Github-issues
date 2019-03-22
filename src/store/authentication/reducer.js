@@ -6,9 +6,9 @@ const initialState = {
 };
 
 const actionsHandlers = {
-  [RESET_ACCESS_TOKEN]: () => {
+  [RESET_ACCESS_TOKEN]: state => {
     return {
-      ...initialState,
+      ...state,
       accessToken: initialState.accessToken,
     };
   },
