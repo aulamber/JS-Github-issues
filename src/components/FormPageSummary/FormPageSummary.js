@@ -12,6 +12,9 @@ import { Wizard } from '../Wizard';
 
 const FormPageSummaryComponent = ({ classes, theme }) => {
   const label = localStorage.getItem('label');
+  const repository = `${localStorage.getItem('owner')}/${localStorage.getItem(
+    'repository'
+  )}`;
   const title = localStorage.getItem('title');
   const description =
     label === 'bug'
@@ -50,6 +53,12 @@ const FormPageSummaryComponent = ({ classes, theme }) => {
           <Divider variant="middle" />
 
           <List>
+            <ListItem>
+              <ListItemText primary="Repository" secondary={repository} />
+            </ListItem>
+
+            <Divider variant="middle" />
+
             <ListItem>
               <ListItemText primary="Title" secondary={title} />
             </ListItem>
