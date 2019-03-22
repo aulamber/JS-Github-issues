@@ -1,68 +1,59 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# GitHub Issue Submitter
 
-## Available Scripts
+## Repo
 
-In the project directory, you can run:
+https://github.com/aulamber/JS-Github-issues.
 
-### `npm start`
+## Demo
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+https://ambler-aulamber.herokuapp.com
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Goal
 
-### `npm test`
+Build a multi-step form to submit fully qualified issues to GitHub.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+The Single Page App consist of 4 steps :
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- General informations
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+User must enter a repository name with `owner/repository` format.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+User must enter a GitHub personal API token for authentication.
 
-### `npm run eject`
+- Issue type
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Issue can be a `Bug` or a `Feature Request`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Details
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+User must enter a `title`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+For a `Feature Request` a text area must be filled by the user to explain what he wants.
 
-## Learn More
+For a `Bug` a text area must be filled by the user to explain how to reproduce the bug. He must fill another field to indicate which version he uses.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Overview
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+A last step show all these informations.
 
-### Code Splitting
+A submit button permit to create the GitHub issue. User is redirected to this issue on success.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Constraints
 
-### Analyzing the Bundle Size
+The website must be a responsive Single Page App.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+At least React must be used. You can use any library/framework on top of it.
 
-### Making a Progressive Web App
+Data must be persistent even after a page reload.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+User can navigate back to edit.
 
-### Advanced Configuration
+## Bonuses
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+When user type the title, similar issues are searched and suggested in realtime to prevent duplicate issues.
 
-### Deployment
+Replace the personal API token by a real GitHub OAuth application (web application flow).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Step transitions are animated
