@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function createIssue(owner, repository, valuesToSubmit) {
   return axios.post(
-    `/api/repos/${owner}/${repository}/iiissues?access_token=${localStorage.getItem(
+    `/api/repos/${owner}/${repository}/issues?access_token=${localStorage.getItem(
       'access_token'
     )}`,
     valuesToSubmit
