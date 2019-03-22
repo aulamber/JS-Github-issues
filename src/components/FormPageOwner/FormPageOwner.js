@@ -5,9 +5,9 @@ import { OnChange } from 'react-final-form-listeners';
 import { TextField } from 'final-form-material-ui';
 import { Grid, withStyles } from '@material-ui/core';
 
-import { Wizard } from '../../Wizard';
+import { Wizard } from '../Wizard';
 
-const PageOwnerComponent = ({ classes, validate }) => (
+const FormPageOwnerComponent = ({ classes, fetchRepositories, validate }) => (
   <Wizard.Page validate={validate}>
     <Grid container alignItems="flex-start" spacing={8}>
       <Grid item xs={12}>
@@ -20,24 +20,22 @@ const PageOwnerComponent = ({ classes, validate }) => (
           fullWidth
         />
         <OnChange name="owner">
-          {value => {
-            localStorage.setItem('owner', value);
-          }}
+          {value => localStorage.setItem('owner', value)}
         </OnChange>
       </Grid>
     </Grid>
   </Wizard.Page>
 );
 
-PageOwnerComponent.propTypes = {
+FormPageOwnerComponent.propTypes = {
   classes: PropTypes.shape().isRequired,
 };
 
-export const PageOwner = withStyles(
+export const FormPageOwner = withStyles(
   {
     minWidth: {
       minWidth: '340px',
     },
   },
   { withTheme: true }
-)(PageOwnerComponent);
+)(FormPageOwnerComponent);

@@ -8,8 +8,6 @@ import {
 } from '@material-ui/core';
 import GithubIcon from 'react-feather/dist/icons/github';
 
-import { appBarStyle } from './AppBar.style';
-
 function AppBarComponent({ classes }) {
   return (
     <MUIAppBar position="static">
@@ -30,6 +28,11 @@ AppBarComponent.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export const AppBar = withStyles(appBarStyle, { withTheme: true })(
-  AppBarComponent
-);
+export const AppBar = withStyles(
+  {
+    grow: {
+      flexGrow: 1,
+    },
+  },
+  { withTheme: true }
+)(AppBarComponent);
